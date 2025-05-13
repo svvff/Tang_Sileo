@@ -1,30 +1,35 @@
-name: Auto Generate Multi-Architecture Packages
+name: Auto Generate Packages (Legacy dpkg)
 on:
   push:
     paths:
-      - 'debs/**'  # 监听所有架构目录的变动
+      - 'debs/**'  # 监听 debs 目录变动
 jobs:
   generate-packages:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04  # 明确使用旧版系统（可选）
     steps:
       - name: Checkout with PAT
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.PAT }}
 
-      - name: Install tools
+      - name: Install dpkg-dev
         run: sudo apt-get update && sudo apt-get install -y dpkg-dev gzip
 
-      - name: Generate multi-arch Packages
+      - name: Check dpkg version
+        run: dpkg --version  # 验证版本（可选）
+
+      - name: Generate Packages files
         run: |
-          rm -f Packages*  # 清除旧索引
-          # 递归扫描所有子目录，自动识别架构
-          dpkg-scanpackages -m --recursive debs/ /dev/null | tee >(gzip > Packages.gz)
-          # 验证生成结果（可选）
+          # 清空旧文件
+          rm -f Packages Packages.gz
+          # 扫描 debs/ 目录下的所有 .deb 文件（当前目录，不递归）
+          dpkg-scanpackages -m debs/ /dev/null | gzip > Packages.gz
+          dpkg-scanpackages -m debs/ /dev/null > Packages
+          # 验证生成结果
           ls -l Packages* && cat Packages | grep -i 'architecture:'
 
       - name: Push changes
         run: |
           git add Packages Packages.gz
-          git commit -m "Update multi-arch Packages ($(date))" || true
+          git commit -m "Update Packages ($(date))" || true
           git push origin main
