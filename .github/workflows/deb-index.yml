@@ -1,50 +1,48 @@
-name: Auto Generate Packages (Debug)
+name: Stable Packages Generator
 on:
   push:
     paths:
-      - 'debs/**'
+      - 'debs/**'  # 监听 debs 目录所有文件变动
+
 jobs:
-  generate-packages:
-    runs-on: ubuntu-20.04
+  generate:
+    runs-on: ubuntu-22.04  # 较新版本系统（支持更多工具）
     steps:
       - name: Checkout with PAT
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.PAT }}
+          fetch-depth: 0  # 拉取完整历史（避免路径问题）
 
-      - name: Install dpkg-dev
+      - name: Install dependencies
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y dpkg-dev gzip
-          dpkg --version  # 打印版本，确认是否为旧版本
+          sudo apt-get install -y dpkg-dev apt-utils gzip
 
-      - name: Debug: List debs directory
+      - name: Debug: List files
         run: |
+          echo "=== 仓库根目录内容 ==="
+          ls -al
           echo "=== debs 目录内容 ==="
-          ls -alh debs/  # 列出文件，确认 .deb 存在
-          echo "=== 文件权限 ==="
-          ls -ld debs/ *.deb  # 检查目录和文件权限
+          ls -al debs/
 
-      - name: Generate Packages files
+      - name: Generate Packages with apt-ftparchive
         run: |
-          rm -f Packages Packages.gz
-          # 调试：先执行扫描并输出结果到日志
-          dpkg-scanpackages -m debs/ /dev/null | tee Packages.tmp
-          gzip -c Packages.tmp > Packages.gz
-          mv Packages.tmp Packages
-          # 验证生成内容
-          echo "=== Packages 文件内容 ==="
+          # 强制清除旧文件
+          rm -f Packages*
+          # 生成配置文件
+          echo 'APT { FTPArchive { Packages { Extensions ".deb"; Compress ". gz"; ShowAll "yes"; }; }; };' > apt.conf
+          # 扫描并生成索引
+          apt-ftparchive -c=apt.conf packages debs/ > Packages
+          gzip Packages
+          # 验证生成结果
+          echo "=== Packages 文件前 10 行 ==="
           head -n 10 Packages
 
-      - name: Configure Git
+      - name: Commit and push
         run: |
-          git config user.name "Actions"
-          git config user.email "actions@github.com"
-          git remote set-url origin "https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git"
-          git status  # 打印状态，确认文件已添加
-
-      - name: Push changes
-        run: |
+          git config user.name "Auto Packages Bot"
+          git config user.email "bot@example.com"
           git add Packages Packages.gz
-          git commit -m "Debug: Update Packages ($(date))" -f || true
+          git commit -m "Auto: Update Packages ($(date +%Y%m%d%H%M%S))" -f
           git push origin main -f
