@@ -1,1 +1,31 @@
+name: Auto Generate Packages File
+on:
+  push:
+    paths:
+      - 'debs/**'  # 仅当 debs 目录有文件变动时触发
 
+jobs:
+  generate-packages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dpkg-dev
+        run: sudo apt-get update && sudo apt-get install -y dpkg-dev
+
+      - name: Generate Packages files
+        run: |
+          dpkg-scanpackages debs/ /dev/null | gzip > Packages.gz
+          # 可选：生成未压缩的 Packages 文件（如果需要）
+          dpkg-scanpackages debs/ /dev/null > Packages
+
+      - name: Commit changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # 自动生成的 GitHub 令牌
+          branch: main  # 提交到 main 分支
+          force: true  # 强制覆盖已存在的文件
+          paths: |
+            Packages
+            Packages.gz
