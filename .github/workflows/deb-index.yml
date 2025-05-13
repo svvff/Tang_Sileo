@@ -5,8 +5,8 @@ on:
       - 'debs/**'  # 监听 debs 目录所有文件变动
 
 jobs:
-  generate:
-    runs-on: ubuntu-22.04  # 较新版本系统（支持更多工具）
+  generate-packages:
+    runs-on: ubuntu-22.04  # 使用较新版本系统
     steps:
       - name: Checkout with PAT
         uses: actions/checkout@v4
@@ -17,32 +17,32 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y dpkg-dev apt-utils gzip
+          sudo apt-get install -y dpkg-dev apt-utils gzip  # 安装必要工具
 
       - name: Debug: List files
         run: |
           echo "=== 仓库根目录内容 ==="
           ls -al
           echo "=== debs 目录内容 ==="
-          ls -al debs/
+          ls -al debs/  # 打印文件列表（调试用）
 
       - name: Generate Packages with apt-ftparchive
         run: |
-          # 强制清除旧文件
-          rm -f Packages*
-          # 生成配置文件
-          echo 'APT { FTPArchive { Packages { Extensions ".deb"; Compress ". gz"; ShowAll "yes"; }; }; };' > apt.conf
-          # 扫描并生成索引
+          rm -f Packages*  # 清除旧索引
+          # 生成 apt-ftparchive 配置文件（注意引号闭合）
+          echo 'APT { FTPArchive { Packages { Extensions ".deb"; Compress ". gz"; ShowAll "yes"; }; }; }' > apt.conf
+          # 扫描 debs 目录并生成 Packages 文件
           apt-ftparchive -c=apt.conf packages debs/ > Packages
-          gzip Packages
-          # 验证生成结果
+          gzip Packages  # 压缩文件
+          # 验证生成结果（调试用）
           echo "=== Packages 文件前 10 行 ==="
           head -n 10 Packages
 
-      - name: Commit and push
+      - name: Commit and push changes
         run: |
           git config user.name "Auto Packages Bot"
           git config user.email "bot@example.com"
+          git remote set-url origin "https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git"
           git add Packages Packages.gz
-          git commit -m "Auto: Update Packages ($(date +%Y%m%d%H%M%S))" -f
-          git push origin main -f
+          git commit -m "Auto: Update Packages ($(date +%Y%m%d%H%M%S))" -f || true
+          git push origin main -f  # 强制推送（避免无变更时失败）
