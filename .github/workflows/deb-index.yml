@@ -1,32 +1,42 @@
-name: Auto Generate Packages File
+name: Auto Generate Packages
 on:
   push:
     paths:
-      - 'debs/**'  # 仅监听 debs 目录变动
-
+      - 'debs/*'  # 监听 debs 根目录文件变动
 jobs:
   generate-packages:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository with PAT
+      - name: Checkout with PAT
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PAT }}  # 显式使用 PAT 检出代码
+          token: ${{ secrets.PAT }}
 
-      - name: Install dpkg-dev
-        run: sudo apt-get update && sudo apt-get install -y dpkg-dev
-
-      - name: Generate Packages files
+      - name: Install tools
         run: |
-          # 生成压缩和未压缩的 Packages 文件
-          dpkg-scanpackages debs/ /dev/null | gzip > Packages.gz
-          dpkg-scanpackages debs/ /dev/null > Packages
+          sudo apt-get update
+          sudo apt-get install -y dpkg-dev gzip
 
-      - name: Commit and push changes
+      - name: Check dpkg version
+        run: dpkg --version  # 确认版本是否支持递归（可选）
+
+      - name: Generate Packages
         run: |
-          # 添加并提交 Packages 文件
+          rm -f Packages*
+          # 关键：移除 --recursive，直接扫描 debs/ 目录
+          dpkg-scanpackages -m debs/ /dev/null | tee >(gzip > Packages.gz)
+          # 验证：检查生成的文件是否包含架构信息
+          if [ -s Packages ]; then
+            echo "成功生成 Packages 文件，包含 $(grep -c 'Architecture:' Packages) 个架构"
+          else
+            echo "警告：未生成 Packages 文件，可能无有效 .deb 文件"
+          fi
+
+      - name: Push changes
+        run: |
+          git config user.name "Auto Packages"
+          git config user.email "auto@example.com"
+          git remote set-url origin "https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git"
           git add Packages Packages.gz
-          # 若没有修改，避免报错
-          git commit -m "Auto-generate Packages file" || echo "No changes to commit"
-          # 推送至主分支（根据你的仓库分支名调整）
-          git push origin main
+          git commit -m "Auto: Update Packages ($(date +%Y%m%d%H%M))" -f || true
+          git push origin main -f
