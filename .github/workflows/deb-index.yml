@@ -22,6 +22,14 @@ jobs:
           dpkg-scanpackages debs/ /dev/null | gzip > Packages.gz
           dpkg-scanpackages debs/ /dev/null > Packages
 
+      - name: Configure Git credentials
+        run: |
+          # 设置 Git 用户信息（与 GitHub 账号无关，仅用于提交记录）
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          # 关键：重设远程仓库 URL，嵌入 PAT 作为认证
+          git remote set-url origin "https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git"
+
       - name: Commit and push changes
         run: |
           # 添加并提交 Packages 文件
