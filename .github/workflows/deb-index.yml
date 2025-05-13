@@ -13,30 +13,25 @@ jobs:
         with:
           token: ${{ secrets.PAT }}  # 显式使用 PAT 检出代码
 
-      - name: Install dpkg - dev
-        run: sudo apt - get update && sudo apt - get install - y dpkg - dev
+      - name: Install necessary tools
+        run: sudo apt - get update && sudo apt - get install - y dpkg - dev apt - utils  # 安装 dpkg - dev（生成 Packages 所需）和 apt - utils（含 apt - ftparchive）
 
-      - name: Generate Packages files
+      - name: Generate Packages and Release files
         run: |
           # 生成压缩和未压缩的 Packages 文件
           dpkg - scanpackages debs/ /dev/null | gzip > Packages.gz
           dpkg - scanpackages debs/ /dev/null > Packages
-          # 生成 Release 文件
+          # 生成 Release 文件（-o 参数指定输出文件名，. 表示当前目录）
           apt - ftparchive release - o Release .
 
       - name: Configure Git credentials
         run: |
-          # 设置 Git 用户信息（与 GitHub 账号无关，仅用于提交记录）
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          # 关键：重设远程仓库 URL，嵌入 PAT 作为认证
           git remote set - url origin "https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git"
 
       - name: Commit and push changes
         run: |
-          # 添加并提交 Packages 和 Release 文件
-          git add Packages Packages.gz Release
-          # 若没有修改，避免报错
+          git add Packages Packages.gz Release  # 添加 Release 文件
           git commit - m "Auto - generate Packages and Release files" || echo "No changes to commit"
-          # 推送至主分支（根据你的仓库分支名调整）
           git push origin main
