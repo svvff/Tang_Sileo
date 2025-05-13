@@ -1,36 +1,32 @@
-name: Stable Packages Generator
+name: Auto Generate Packages File
 on:
   push:
     paths:
-      - 'debs/**'  # Trigger on changes to debs/ and its subfolders
+      - 'debs/**'  # 仅监听 debs 目录变动
 
 jobs:
   generate-packages:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout repository with PAT
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PAT }}  # Ensure PAT has "repo" permissions
+          token: ${{ secrets.PAT }}  # 显式使用 PAT 检出代码
 
-      - name: Install dependencies
-        run: |
-          sudo apt-get update -y
-          sudo apt-get install -y dpkg-dev apt-utils gzip  # Installs apt-ftparchive
+      - name: Install dpkg-dev
+        run: sudo apt-get update && sudo apt-get install -y dpkg-dev
 
       - name: Generate Packages files
         run: |
-          rm -f Packages*  # Delete old index files
-          # Generate config for apt-ftparchive
-          echo 'APT { FTPArchive { Packages { Extensions ".deb"; Compress ". gz"; ShowAll "yes"; }; }; }' > apt.conf
-          # Scan debs/ directory and generate index
-          apt-ftparchive -c=apt.conf packages debs/ > Packages
-          gzip Packages  # Compress the index
+          # 生成压缩和未压缩的 Packages 文件
+          dpkg-scanpackages debs/ /dev/null | gzip > Packages.gz
+          dpkg-scanpackages debs/ /dev/null > Packages
 
-      - name: Commit and push
+      - name: Commit and push changes
         run: |
-          git config user.name "Auto Packages Bot"
-          git config user.email "bot@example.com"
+          # 添加并提交 Packages 文件
           git add Packages Packages.gz
-          git commit -m "Auto: Update Packages ($(date +%Y%m%d%H%M%S))" || true
+          # 若没有修改，避免报错
+          git commit -m "Auto-generate Packages file" || echo "No changes to commit"
+          # 推送至主分支（根据你的仓库分支名调整）
           git push origin main
