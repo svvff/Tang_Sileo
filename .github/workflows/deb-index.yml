@@ -1,11 +1,11 @@
-name: Auto Generate Packages (Legacy dpkg)
+name: Auto Generate Packages (Debug)
 on:
   push:
     paths:
-      - 'debs/**'  # 监听 debs 目录变动
+      - 'debs/**'
 jobs:
   generate-packages:
-    runs-on: ubuntu-20.04  # 明确使用旧版系统（可选）
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout with PAT
         uses: actions/checkout@v4
@@ -13,23 +13,38 @@ jobs:
           token: ${{ secrets.PAT }}
 
       - name: Install dpkg-dev
-        run: sudo apt-get update && sudo apt-get install -y dpkg-dev gzip
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y dpkg-dev gzip
+          dpkg --version  # 打印版本，确认是否为旧版本
 
-      - name: Check dpkg version
-        run: dpkg --version  # 验证版本（可选）
+      - name: Debug: List debs directory
+        run: |
+          echo "=== debs 目录内容 ==="
+          ls -alh debs/  # 列出文件，确认 .deb 存在
+          echo "=== 文件权限 ==="
+          ls -ld debs/ *.deb  # 检查目录和文件权限
 
       - name: Generate Packages files
         run: |
-          # 清空旧文件
           rm -f Packages Packages.gz
-          # 扫描 debs/ 目录下的所有 .deb 文件（当前目录，不递归）
-          dpkg-scanpackages -m debs/ /dev/null | gzip > Packages.gz
-          dpkg-scanpackages -m debs/ /dev/null > Packages
-          # 验证生成结果
-          ls -l Packages* && cat Packages | grep -i 'architecture:'
+          # 调试：先执行扫描并输出结果到日志
+          dpkg-scanpackages -m debs/ /dev/null | tee Packages.tmp
+          gzip -c Packages.tmp > Packages.gz
+          mv Packages.tmp Packages
+          # 验证生成内容
+          echo "=== Packages 文件内容 ==="
+          head -n 10 Packages
+
+      - name: Configure Git
+        run: |
+          git config user.name "Actions"
+          git config user.email "actions@github.com"
+          git remote set-url origin "https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git"
+          git status  # 打印状态，确认文件已添加
 
       - name: Push changes
         run: |
           git add Packages Packages.gz
-          git commit -m "Update Packages ($(date))" || true
-          git push origin main
+          git commit -m "Debug: Update Packages ($(date))" -f || true
+          git push origin main -f
