@@ -17,15 +17,16 @@ jobs:
       - name: Generate Packages files
         run: |
           dpkg-scanpackages debs/ /dev/null | gzip > Packages.gz
-          # 可选：生成未压缩的 Packages 文件（如果需要）
-          dpkg-scanpackages debs/ /dev/null > Packages
+          dpkg-scanpackages debs/ /dev/null > Packages  # 生成未压缩版本（可选）
 
       - name: Commit changes
-        uses: ad-m/github-push-action@v0.6.0
+        uses: stefanzweifel/git-auto-commit-action@v5  # 替换为支持 paths 参数的 Action
         with:
-          github_token: ${{ secrets.PAT }}  # 自动生成的 GitHub 令牌
-          branch: main  # 提交到 main 分支
-          force: true  # 强制覆盖已存在的文件
-          paths: |
-            Packages
-            Packages.gz
+          commit_message: "Auto-generate Packages file"
+          branch: main
+          file_pattern: Packages Packages.gz  # 指定要提交的文件
+          commit_user_name: GitHub Actions
+          commit_user_email: actions@github.com
+          commit_author: GitHub Actions <actions@github.com>
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}  # 使用自定义 PAT
