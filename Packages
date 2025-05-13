@@ -1,0 +1,50 @@
+Package: byg.iosios.net.lockbutton
+Version: 0.1-2
+Architecture: iphoneos-arm64
+Maintainer: 搬运工
+Depends: firmware (>= 5.0), mobilesubstrate
+Filename: debs/一键锁屏(改1024图标).deb
+Size: 604276
+MD5sum: 1bd115c66d0c08d2f352dd643bf35a92
+SHA1: fbbf98d9980dc884132ddc62cf88a102c46e3072
+SHA256: d5ac0d66c8e4db0056cfbe41d4aea15be85c338e8a971e51e2b65bc231587bdf
+Section: 系统增强
+Priority: optional
+Description: 一键锁屏(Rootless)电话助手作者插件，因群友要求所以上架
+Author: xybp888
+Icon: https://chinesebuilding.club/pic/cydia.png
+Name: 一键锁屏-Rootless
+Sponsor: 搬运工
+
+Package: com.tang.xiangrikuiads
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: debs/com.tang.xiangrikuiads_0.0.1_iphoneos-arm64.deb
+Size: 2620
+MD5sum: b0b35b4722369ec0fd127c48b829be20
+SHA1: 8323357be0d46bdb96a3dac1272eb42ac21410b7
+SHA256: 2848bd894b9fe2014f2304fb50214dce955747691c087e95415f471944ee1ca4
+Section: Tweaks
+Description: ***Made using Flex To Theos updated by Randy420***
+Author: tang <>
+Name: XiangRiKuiAds
+
+Package: com.tang.xingtikusvip
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: debs/com.tang.xingtikusvip_0.0.1_iphoneos-arm64.deb
+Size: 2684
+MD5sum: 163ed811cfffadf460dcd99cad092e7d
+SHA1: 5cbd1885d629d45d09c5b82515646c5b3a7aeacb
+SHA256: 92e9ceb13fd615a0f309645f7d21bea0584a8cb97e7f942818d5f98ec454e8e0
+Section: Tweaks
+Description: ***Made using Flex To Theos updated by Randy420***
+Author: tang <>
+Name: XingTiKuSvip
+
