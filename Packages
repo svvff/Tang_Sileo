@@ -16,6 +16,22 @@ Icon: https://chinesebuilding.club/pic/cydia.png
 Name: 一键锁屏-Rootless
 Sponsor: 搬运工
 
+Package: com.tang.caiyunsvip
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: debs/com.tang.caiyunsvip_0.0.1_iphoneos-arm64.deb
+Size: 2696
+MD5sum: 50effc139bfa50e258696d2913d56dbc
+SHA1: 302cb4b97f87efb0973ed546929a75aedb85dd2d
+SHA256: 50d9928ff56b0cbbf4bf9db3803febe287c7fd97abbabe728a7bdb7c668d8f9d
+Section: Tweaks
+Description: ***Made using Flex To Theos updated by Randy420***
+Author: tang <>
+Name: CaiYunSvip
+
 Package: com.tang.xiangrikuiads
 Version: 0.0.1
 Architecture: iphoneos-arm64
