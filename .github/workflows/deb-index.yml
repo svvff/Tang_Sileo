@@ -1,40 +1,30 @@
-name: Auto Generate Packages File
+name: Auto Generate Multi-Architecture Packages
 on:
   push:
     paths:
-      - 'debs/**'  # 仅监听 debs 目录变动
-
+      - 'debs/**'  # 监听所有架构目录的变动
 jobs:
   generate-packages:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository with PAT
+      - name: Checkout with PAT
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PAT }}  # 显式使用 PAT 检出代码
+          token: ${{ secrets.PAT }}
 
-      - name: Install dpkg-dev
-        run: sudo apt-get update && sudo apt-get install -y dpkg-dev
+      - name: Install tools
+        run: sudo apt-get update && sudo apt-get install -y dpkg-dev gzip
 
-      - name: Generate Packages files
+      - name: Generate multi-arch Packages
         run: |
-          # 生成压缩和未压缩的 Packages 文件
-          dpkg-scanpackages debs/ /dev/null | gzip > Packages.gz
-          dpkg-scanpackages debs/ /dev/null > Packages
+          rm -f Packages*  # 清除旧索引
+          # 递归扫描所有子目录，自动识别架构
+          dpkg-scanpackages -m --recursive debs/ /dev/null | tee >(gzip > Packages.gz)
+          # 验证生成结果（可选）
+          ls -l Packages* && cat Packages | grep -i 'architecture:'
 
-      - name: Configure Git credentials
+      - name: Push changes
         run: |
-          # 设置 Git 用户信息（与 GitHub 账号无关，仅用于提交记录）
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          # 关键：重设远程仓库 URL，嵌入 PAT 作为认证
-          git remote set-url origin "https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git"
-
-      - name: Commit and push changes
-        run: |
-          # 添加并提交 Packages 文件
           git add Packages Packages.gz
-          # 若没有修改，避免报错
-          git commit -m "Auto-generate Packages file" || echo "No changes to commit"
-          # 推送至主分支（根据你的仓库分支名调整）
+          git commit -m "Update multi-arch Packages ($(date))" || true
           git push origin main
