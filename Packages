@@ -224,22 +224,6 @@ Description: ***Made using Flex To Theos updated by Randy420***
 Author: tang <>
 Name: lanjiyinAds
 
-Package: com.tang.meituanads
-Version: 0.0.1
-Architecture: iphoneos-arm64
-Maintainer: tang <>
-Installed-Size: 72
-Depends: mobilesubstrate
-Filename: ./com.tang.meituanads_0.0.1_iphoneos-arm64.deb
-Size: 2378
-MD5sum: 0af385711a503ca954f1c5bada452f8a
-SHA1: 9bdf6f4a020020772eece73df480abb8e1bb32e7
-SHA256: c1c7cf619b8cc795c9da2a56c59713e8f98c1b0ac20f1383b5d365f74a268b7b
-Section: Tweaks
-Description: ***Made using Flex To Theos updated by Randy420***
-Author: tang <>
-Name: MeiTuanAds
-
 Package: com.tang.meituanjb
 Filename: ./com.tang.meituanjb_0.0.1_iphoneos-arm64.deb
 Size: 4042
