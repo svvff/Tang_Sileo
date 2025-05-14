@@ -346,6 +346,22 @@ Description: 解锁万能钥匙本地会员
 Author: tang <>
 Name: WiFiVip
 
+Package: com.tang.xiangrikuiads
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: ./com.tang.xiangrikuiads_0.0.1_iphoneos-arm64.deb
+Size: 2620
+MD5sum: b0b35b4722369ec0fd127c48b829be20
+SHA1: 8323357be0d46bdb96a3dac1272eb42ac21410b7
+SHA256: 2848bd894b9fe2014f2304fb50214dce955747691c087e95415f471944ee1ca4
+Section: Tweaks
+Description: ***Made using Flex To Theos updated by Randy420***
+Author: tang <>
+Name: XiangRiKuiAds
+
 Package: com.tang.xingtikusvip
 Version: 0.0.1
 Architecture: iphoneos-arm64
