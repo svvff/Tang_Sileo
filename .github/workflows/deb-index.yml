@@ -53,7 +53,7 @@ jobs:
           
           # 检查变更
           if [ -n "$(git status --porcelain)" ]; then
-            COMMIT_TIME=$(date +"%Y-%m-%d %H:%M:%S")
+            COMMIT_TIME=$(TZ=Asia/Shanghai date +"%Y年%m月%d日 %H时%M分%S秒")
             git commit -m "更新时间: $COMMIT_TIME"
             git push origin main
             echo "索引文件已更新"
