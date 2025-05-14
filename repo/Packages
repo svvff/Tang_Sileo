@@ -1,0 +1,32 @@
+Package: com.tang.baidudiskads
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: ./com.tang.baidudiskads_0.0.1_iphoneos-arm64(1).deb
+Size: 3734
+MD5sum: 06290ba8b573a3877990b9234648c30f
+SHA1: 2f4d349efe148d5513796d534d39f54e19f4569c
+SHA256: b58198a0ddbf3fe51a69bdd78fa6f250b2c4647eac5fa87f9abf8c8960850ef8
+Section: Tweaks
+Description: 去除百度网盘广告
+Author: tang <>
+Name: BaiduDiskAds
+
+Package: com.tang.kuake658
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: ./com.tang.kuakeAds658_0.0.1_iphoneos-arm64.deb
+Size: 5940
+MD5sum: ea07cd2341a79ed6f05cba3c4c1a0004
+SHA1: c48dbde9e391a0b1b5de92ddecf77f5a6a7723b6
+SHA256: f336178c973875b41bd25f17f4f7fb790cb220b2a34d465d181a3e6e419f28fb
+Section: Tweaks
+Description: kuake
+Author: tang <>
+Name: KuaKe_6.5.8
+
