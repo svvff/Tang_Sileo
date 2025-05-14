@@ -392,25 +392,3 @@ Priority: optional
 Description: NewTerm3汉化，让theos命令生效
 Name: NewTerm3_theos
 
-Package: ws.hbang.newterm3
-Version: 3.0~beta1
-Architecture: iphoneos-arm64
-Maintainer: HASHBANG Productions <support@hbang.ws>
-Installed-Size: 14899
-Depends: firmware (>= 14.0), zsh | bash | fish, coreutils, ncurses, system-cmds
-Conflicts: ws.hbang.newterm, ws.hbang.newterm2
-Replaces: ws.hbang.newterm, ws.hbang.newterm2
-Filename: ./命令终端.deb
-Size: 3956420
-MD5sum: 51fc08d4919b2e108a319e7ec28f5afa
-SHA1: 6bd9636448211a5eab285ff109f0e5f058fe0a69
-SHA256: d480160c2b28aad6630fb866f3a37f4464109f0731637353ff9aacef80b0067c
-Section: Terminal Support
-Description: Powerful terminal app for iOS
-Tag: compatible_min::ios14.0
-Author: HASHBANG Productions <support@hbang.ws>
-Depiction: https://chariz.com/get/newterm-beta
-Icon: https://img.chariz.cloud/icon/newterm-beta/icon@3x.png
-Name: NewTerm 3 Beta
-Support: https://hashbang.productions/support/
-
