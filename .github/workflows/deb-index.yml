@@ -53,7 +53,8 @@ jobs:
           
           # 检查变更
           if [ -n "$(git status --porcelain)" ]; then
-            git commit -m "🔧 Auto-Update: Packages Index"
+            COMMIT_TIME=$(date +"%Y-%m-%d %H:%M:%S")
+            git commit -m "更新时间: $COMMIT_TIME"
             git push origin main
             echo "索引文件已更新"
           else
