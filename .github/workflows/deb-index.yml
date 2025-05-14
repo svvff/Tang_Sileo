@@ -1,9 +1,3 @@
-name: Build Sileo Repo (No Signing)
-on:
-  push:
-    branches: [ main ]  # 推送到 main 分支时自动运行
-  workflow_dispatch:    # 支持手动触发
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -11,23 +5,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.10
+      - name: Set up Python 3.10  # 改为支持的版本（如 3.10/3.11）
         uses: actions/setup-python@v5
         with:
-          python-version: 3.10
+          python-version: 3.10  # 关键修改点！
 
       - name: Install dpkg-scanpackages
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y dpkg-dev  # 安装 dpkg-scanpackages 工具
+          sudo apt-get install -y dpkg-dev  # 安装生成索引的核心工具
 
       - name: Generate repo index
         run: |
-          # 确保 repo 目录存在，不存在则创建
-          mkdir -p repo
+          mkdir -p repo  # 确保 repo 目录存在（若不存在）
           cd repo
-          # 生成 Packages 索引（压缩版）
-          dpkg-scanpackages . /dev/null | gzip > Packages.gz
+          dpkg-scanpackages . /dev/null | gzip > Packages.gz  # 生成索引文件
           cd ..
 
       - name: Commit and push changes
@@ -35,7 +27,6 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add -A
-          # 仅在文件有变化时提交（避免空提交）
           if git diff --quiet; then
             echo "No changes to commit."
           else
