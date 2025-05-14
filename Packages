@@ -378,22 +378,6 @@ Description: ***Made using Flex To Theos updated by Randy420***
 Author: tang <>
 Name: ZYZhongYiAds
 
-Package: com.xx.safarixhook
-Version: 1.0.0
-Architecture: iphoneos-arm64
-Maintainer: x✨
-Installed-Size: 168
-Depends: mobilesubstrate (>= 0.9.5000)
-Filename: ./SafariXHook.1.0.0.deb
-Size: 10572
-MD5sum: da9d54aa0be9dda5d69fdd249eecf55b
-SHA1: 1430ae31c1d370131624ac5b210b3a68d4acbac1
-SHA256: e9034e2d969d1c6c12edbaf240c5d488dfcd8e55b9e93a01df53e57adc83a675
-Section: Tweaks
-Description: 解决SafariX闪退问题
-Author: x✨
-Name: SafariXHook
-
 Package: lizi.newterm.cn
 Version: 1.0
 Architecture: iphoneos-arm64
@@ -427,28 +411,6 @@ Tag: compatible_min::ios14.0
 Author: HASHBANG Productions <support@hbang.ws>
 Depiction: https://chariz.com/get/newterm-beta
 Icon: https://img.chariz.cloud/icon/newterm-beta/icon@3x.png
-Name: NewTerm 3 Beta
-Support: https://hashbang.productions/support/
-
-Package: ws.tang.newterm3
-Version: 3.0~beta1
-Architecture: iphoneos-arm64
-Maintainer: HASHBANG Productions <support@hbang.ws>
-Installed-Size: 14899
-Depends: firmware (>= 14.0), zsh | bash | fish, coreutils, ncurses, system-cmds
-Conflicts: ws.hbang.newterm, ws.hbang.newterm2
-Replaces: ws.hbang.newterm, ws.hbang.newterm2
-Filename: ./ws.tang.newterm3_3.0~beta1_iphoneos-arm64.deb
-Size: 3838952
-MD5sum: 1479d472b81e326d059026e97e48e17c
-SHA1: 0f18a565fbcb412d59642c1884d8e3fd5aa37927
-SHA256: 54a333b255e3450cd5e54c3a556d4b8b8cb27b5efb146825d65c6689e7db3736
-Section: Terminal Support
-Description: Powerful terminal app for iOS
-Tag: compatible_min::ios14.0
-Author: HASHBANG Productions <support@hbang.ws>
-Depiction: https://chariz.com/get/newterm-beta
-Icon: https://pic2.zhimg.com/80/v2-8cb352b490dea9ffab91caa9555e5d8f_qhd.webp
 Name: NewTerm 3 Beta
 Support: https://hashbang.productions/support/
 
