@@ -1,3 +1,181 @@
+Package: byg.iosios.net.lockbutton
+Version: 0.1-2
+Architecture: iphoneos-arm64
+Maintainer: 搬运工
+Depends: firmware (>= 5.0), mobilesubstrate
+Filename: ./一键锁屏(改1024图标).deb
+Size: 604276
+MD5sum: 1bd115c66d0c08d2f352dd643bf35a92
+SHA1: fbbf98d9980dc884132ddc62cf88a102c46e3072
+SHA256: d5ac0d66c8e4db0056cfbe41d4aea15be85c338e8a971e51e2b65bc231587bdf
+Section: 系统增强
+Priority: optional
+Description: 一键锁屏(Rootless)电话助手作者插件，因群友要求所以上架
+Author: xybp888
+Icon: https://chinesebuilding.club/pic/cydia.png
+Name: 一键锁屏-Rootless
+Sponsor: 搬运工
+
+Package: com.netskao.dumpdecrypter
+Version: 1.4-4
+Architecture: iphoneos-arm64
+Maintainer: Nets
+Installed-Size: 4324
+Depends: firmware (>= 15.0), mobilesubstrate
+Filename: ./应用砸壳.deb
+Size: 1633964
+MD5sum: b240c5133e0d01a66919e949935e8953
+SHA1: 4c9d65006ba0e26c63ae9f742b2891a1ee3fba6c
+SHA256: 32970c9cd79f89b99e6d54c6c070b91091d3623257f15551a83c44103bc10a70
+Section: Netskao-Tweaks
+Description: Decrypt iOS Apps and Plugins
+Author: Netskao
+Name: DumpDecrypter
+
+Package: com.tang.3dbody
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: ./com.tang.3dbody_0.0.1_iphoneos-arm64.deb
+Size: 3228
+MD5sum: 49211b02d53bd3fada50ccb313662cd2
+SHA1: 63e0cfd44dbd24589aea3ef67f97d9b4c770b1b0
+SHA256: 707d759e7f2eca1cdb04131a63d21ec0fbed6166c987a5bb245e71348a6b4c42
+Section: Tweaks
+Description: Made using Flex To Theos updated by Randy420
+Author: tang <>
+Name: 3Dbody
+
+Package: com.tang.addons.vip
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: ./com.tang.addons.vip_0.0.1_iphoneos-arm64.deb
+Size: 2276
+MD5sum: 9a4b71d576b45c0577b8665bc3a7dfe9
+SHA1: 14134e6c029b7ffed2db4aa57f44ea543d02174a
+SHA256: 9f24c8c93f9bfd04a962448730178eb1bcba92fc7551b32168bf75ea621faabe
+Section: Tweaks
+Description: Made using Flex To Theos updated by Randy420
+Author: tang <>
+Name: AddonsSvip
+
+Package: com.tang.ailiYunsvip
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: ./com.tang.ailiYunsvip_0.0.1_iphoneos-arm64.deb
+Size: 3396
+MD5sum: 3fc04076114306e417f7790fcf343ba0
+SHA1: 3f43503721b9d2be1dd846f1a70d377246340c57
+SHA256: 41f8296e3e26132abfc7c3a022f8ce447bef76ff70f2a4ad35ade372a8a9dcf2
+Section: Tweaks
+Description: Made using Flex To Theos updated by Randy420
+Author: tang <>
+Name: AiLiYunSvip
+
+Package: com.tang.alipayads
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: ./com.tang.alipayads_0.0.1_iphoneos-arm64.deb
+Size: 3534
+MD5sum: bd96be862e967ffb1daa0615faeb304b
+SHA1: c84a38670d5ced88e5d12a26afe9098aa8bd5521
+SHA256: 3a4430df423f60dd8d8c9e8e4b12a66f8aea9e67f93e4797460e068e4db38df3
+Section: Tweaks
+Description: ***Made using Flex To Theos updated by Randy420***
+Author: tang <>
+Name: AlipayAds
+
+Package: com.tang.baidudiskads
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 88
+Depends: mobilesubstrate
+Filename: ./com.tang.baidudiskads_0.0.1_iphoneos-arm64.deb
+Size: 7568
+MD5sum: b7232cbac077ef03414945d6b6a9266a
+SHA1: 4cba59bf9a00cf439d7c2569c94273e489961fd2
+SHA256: 6a7390bda6b1eb4d1ff1511eef07cd4ed183cc2adbd7d3240431e30b3d8488ab
+Section: Tweaks
+Description: ***Made using Flex To Theos updated by Randy420***
+Author: tang <>
+Name: BaiDuDiskAds
+
+Package: com.tang.caiyunsvip
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: ./com.tang.caiyunsvip_0.0.1_iphoneos-arm64.deb
+Size: 2696
+MD5sum: 50effc139bfa50e258696d2913d56dbc
+SHA1: 302cb4b97f87efb0973ed546929a75aedb85dd2d
+SHA256: 50d9928ff56b0cbbf4bf9db3803febe287c7fd97abbabe728a7bdb7c668d8f9d
+Section: Tweaks
+Description: ***Made using Flex To Theos updated by Randy420***
+Author: tang <>
+Name: CaiYunSvip
+
+Package: com.tang.documentssvip
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: ./com.tang.documentssvip_0.0.1_iphoneos-arm64.deb
+Size: 2460
+MD5sum: 21873e79bf3410406c39ed70ff50cd5d
+SHA1: 33560b923afcb504ea92433c4f3d33710c10fbdd
+SHA256: cdded7b22d25c76c309fda64a546078442f593f5883c85688681bc168ea66188
+Section: Tweaks
+Description: 解锁Documents尊贵会员
+Author: tang <>
+Name: DocumentsSvip
+
+Package: com.tang.gaodenoupdate
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: ./com.tang.gaodenoupdate_0.0.1_iphoneos-arm64.deb
+Size: 2202
+MD5sum: e1f32d4cf6862d8fa364286bbb6089be
+SHA1: 46eeb7a4ee9e964d6aa4ccfd000632cb53928049
+SHA256: a4426096e79b1fe7835146a9f9d66ea6ae7d562231adef7f70f5a806ddceec52
+Section: Tweaks
+Description: ***Made using Flex To Theos updated by Randy420***
+Author: tang <>
+Name: GaoDeNoUpdate
+
+Package: com.tang.jingluosvip
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: ./com.tang.jingluosvip_0.0.1_iphoneos-arm64.deb
+Size: 3130
+MD5sum: e1df9f5f980bbca1eb51c89fc9d9d603
+SHA1: d639151dae3e5fe83fda79cbee4f6bdca62684e7
+SHA256: 04e192b792049a406499eccf72a34c9eb43fe41307d7336e6365f34c7b4b7873
+Section: Tweaks
+Description: ***Made using Flex To Theos updated by Randy420***
+Author: tang <>
+Name: JingLuoSvip
+
 Package: com.tang.kuake658
 Version: 0.0.1
 Architecture: iphoneos-arm64
@@ -13,4 +191,296 @@ Section: Tweaks
 Description: kuake
 Author: tang <>
 Name: KuaKe_6.5.8
+
+Package: com.tang.kugouliteads
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: ./com.tang.kugouliteads_0.0.1_iphoneos-arm64.deb
+Size: 2698
+MD5sum: fe0a23b709b0ac2f05616fce8fcf26bc
+SHA1: d389926c8a8a948f45bf68818759a1e7ef8408f6
+SHA256: c7554e18ad0a709851da053503ed2d97d2eb6d25468a2c62b7f5206bd2680831
+Section: Tweaks
+Description: ***Made using Flex To Theos updated by Randy420***
+Author: tang <>
+Name: KuGouLiteAds
+
+Package: com.tang.lanjiyinads
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: ./com.tang.lanjiyinads_0.0.1_iphoneos-arm64.deb
+Size: 2462
+MD5sum: 614a48138925d87e362bdc6cacbcaccd
+SHA1: 7bd9a4235d50a51f4e31d55a5c2907c9a45200e1
+SHA256: fefeb133a061645f7d114a6b99430d4a7d042aef574c547a16ed1fc10fc8cf32
+Section: Tweaks
+Description: ***Made using Flex To Theos updated by Randy420***
+Author: tang <>
+Name: lanjiyinAds
+
+Package: com.tang.meituanads
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: ./com.tang.meituanads_0.0.1_iphoneos-arm64.deb
+Size: 2378
+MD5sum: 0af385711a503ca954f1c5bada452f8a
+SHA1: 9bdf6f4a020020772eece73df480abb8e1bb32e7
+SHA256: c1c7cf619b8cc795c9da2a56c59713e8f98c1b0ac20f1383b5d365f74a268b7b
+Section: Tweaks
+Description: ***Made using Flex To Theos updated by Randy420***
+Author: tang <>
+Name: MeiTuanAds
+
+Package: com.tang.meituanjb
+Filename: ./com.tang.meituanjb_0.0.1_iphoneos-arm64.deb
+Size: 4042
+MD5sum: 5430e93d3bec6e641c653c73ca378175
+SHA1: 5a5091cb0330ef975f32ac5028932e95439c4d88
+SHA256: 14cf02f0bcd75f7de135271ac2b267d4a2581f003099a0c2afd472664327d0f8
+Description: 此patch只是个简单的【越狱屏蔽】、【风险设备屏蔽】、【去启动广告】
+Author: tang <>
+Name: MeiTuanJB
+
+Package: com.tang.pddads
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: ./com.tang.pddads_0.0.1_iphoneos-arm64.deb
+Size: 4492
+MD5sum: f45be8671e89a2ba416a39adecf7a934
+SHA1: 56f748711ca9a78daffa32ee1de0bdc651b45cc5
+SHA256: bbc9502a9965228d8b08a8a4e365baa2ddf2b5a6cbdc0b39c31b7bdc84f88c64
+Section: Tweaks
+Description: ***Made using Flex To Theos updated by Randy420***
+Author: tang <>
+Name: PDDAds
+
+Package: com.tang.taobaoads
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: ./com.tang.taobaoads_0.0.1_iphoneos-arm64.deb
+Size: 2502
+MD5sum: 26f1481a87d14482f53fbc9e2aede054
+SHA1: 90a699519c09d46c9186ca3248007aec5ac8cd4d
+SHA256: 625931fedb12daf2ef8106265b19411ec7091539cbcf5bcd81333cbb012531a0
+Section: Tweaks
+Description: ***Made using Flex To Theos updated by Randy420***
+Author: tang <>
+Name: TaoBaoAds
+
+Package: com.tang.vpnspeed
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: ./com.tang.vpnspeed_0.0.1_iphoneos-arm64.deb
+Size: 2140
+MD5sum: f6ebc73c4fb69d3f6dfcb771de2483d5
+SHA1: 9083452a49714227fee77056f1f9e5d662586141
+SHA256: 9ebd6e92afef53eab60889a50741112e5ca485edd68ddbb8fcdb0778312467f8
+Section: Tweaks
+Description: 加速SuperVPN启动
+Author: tang <>
+Name: VPNSpeed
+
+Package: com.tang.wechatads
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: ./com.tang.wechatads_0.0.1_iphoneos-arm64.deb
+Size: 2336
+MD5sum: bfb9085dd16a9864c17daffc8d6a69ce
+SHA1: c76bfad3901183d7c6c71d342ef8fab604705d78
+SHA256: d423df52cb91ec860262399b2eaeca7eb8603b189704a829eac1ac4d56c37daf
+Section: Tweaks
+Description: ***Made using Flex To Theos updated by Randy420***
+Author: tang <>
+Name: WeChatAds
+
+Package: com.tang.wifikeysvip
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: ./com.tang.wifikeysvip_0.0.1_iphoneos-arm64.deb
+Size: 2606
+MD5sum: 1aa029e93755a67ab7f7ad26e6869af8
+SHA1: af788427c225975c15b32d17176b089b86042b9a
+SHA256: 443f442cefc02b1588b26f1ab5a358299a437030d6e448c19ed391c4d393184a
+Section: Tweaks
+Description: 解锁万能钥匙会员
+Author: tang <>
+Name: WiFiKeySvip
+
+Package: com.tang.wifilist
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: ./com.tang.wifilist_0.0.1_iphoneos-arm64.deb
+Size: 2092
+MD5sum: cb9cd1f6ed2e25cfb9714107a5f4bbb7
+SHA1: 4b4f97d4ff87cc18ae48b46b1a9cf7c793b6c6b5
+SHA256: 672429c79e579d4cc6ceccbac4aad61d41a2fa948b765fa11c6da0e6932b6ffc
+Section: Tweaks
+Description: Made using Flex To Theos updated by Randy420
+Author: <>
+Name: WiFiList
+
+Package: com.tang.wifivip
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: ./com.tang.wifivip_0.0.1_iphoneos-arm64.deb
+Size: 2862
+MD5sum: 79b922c79ebefba9433ac0be407cf023
+SHA1: 34f65c91d80a0e823f7e46b0103425535ab405f4
+SHA256: 5d8a8428f05527dbb57bb19f263cb6fb50f5932d9fdfd4ca7131fdfebedf1cf5
+Section: Tweaks
+Description: 解锁万能钥匙本地会员
+Author: tang <>
+Name: WiFiVip
+
+Package: com.tang.xiangrikuiads
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: ./com.tang.xiangrikuiads_0.0.1_iphoneos-arm64.deb
+Size: 2620
+MD5sum: b0b35b4722369ec0fd127c48b829be20
+SHA1: 8323357be0d46bdb96a3dac1272eb42ac21410b7
+SHA256: 2848bd894b9fe2014f2304fb50214dce955747691c087e95415f471944ee1ca4
+Section: Tweaks
+Description: ***Made using Flex To Theos updated by Randy420***
+Author: tang <>
+Name: XiangRiKuiAds
+
+Package: com.tang.xingtikusvip
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: ./com.tang.xingtikusvip_0.0.1_iphoneos-arm64.deb
+Size: 2684
+MD5sum: 163ed811cfffadf460dcd99cad092e7d
+SHA1: 5cbd1885d629d45d09c5b82515646c5b3a7aeacb
+SHA256: 92e9ceb13fd615a0f309645f7d21bea0584a8cb97e7f942818d5f98ec454e8e0
+Section: Tweaks
+Description: ***Made using Flex To Theos updated by Randy420***
+Author: tang <>
+Name: XingTiKuSvip
+
+Package: com.tang.zyzhongyiads
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Maintainer: tang <>
+Installed-Size: 72
+Depends: mobilesubstrate
+Filename: ./com.tang.zyzhongyiads_0.0.1_iphoneos-arm64.deb
+Size: 2798
+MD5sum: 44b571533b8803a21696fb69c6109a23
+SHA1: a9bf2027cf503ccc5323f5764cccf3c4a10ff6ab
+SHA256: bd89e308a600a5f1c514b222c2b92abbbeebe58ad494ba705887ab215817c6b2
+Section: Tweaks
+Description: ***Made using Flex To Theos updated by Randy420***
+Author: tang <>
+Name: ZYZhongYiAds
+
+Package: com.xx.safarixhook
+Version: 1.0.0
+Architecture: iphoneos-arm64
+Maintainer: x✨
+Installed-Size: 168
+Depends: mobilesubstrate (>= 0.9.5000)
+Filename: ./SafariXHook.1.0.0.deb
+Size: 10572
+MD5sum: da9d54aa0be9dda5d69fdd249eecf55b
+SHA1: 1430ae31c1d370131624ac5b210b3a68d4acbac1
+SHA256: e9034e2d969d1c6c12edbaf240c5d488dfcd8e55b9e93a01df53e57adc83a675
+Section: Tweaks
+Description: 解决SafariX闪退问题
+Author: x✨
+Name: SafariXHook
+
+Package: lizi.newterm.cn
+Version: 1.0
+Architecture: iphoneos-arm64
+Maintainer: newterm
+Filename: ./lizi.newterm.cn_1.0_iphoneos-arm64.deb
+Size: 1844
+MD5sum: 6c629cbba873d686c8551d5609d15b86
+SHA1: afb3ed6ffd80708cc54b21d1ae94df4fe408adae
+SHA256: 3b3c50085ce7b457497802beb73310b12c81c5c289c33b125fa27b46d2f56970
+Section: newterm
+Priority: optional
+Description: NewTerm3汉化，让theos命令生效
+Name: NewTerm3_theos
+
+Package: ws.hbang.newterm3
+Version: 3.0~beta1
+Architecture: iphoneos-arm64
+Maintainer: HASHBANG Productions <support@hbang.ws>
+Installed-Size: 14899
+Depends: firmware (>= 14.0), zsh | bash | fish, coreutils, ncurses, system-cmds
+Conflicts: ws.hbang.newterm, ws.hbang.newterm2
+Replaces: ws.hbang.newterm, ws.hbang.newterm2
+Filename: ./命令终端.deb
+Size: 3956420
+MD5sum: 51fc08d4919b2e108a319e7ec28f5afa
+SHA1: 6bd9636448211a5eab285ff109f0e5f058fe0a69
+SHA256: d480160c2b28aad6630fb866f3a37f4464109f0731637353ff9aacef80b0067c
+Section: Terminal Support
+Description: Powerful terminal app for iOS
+Tag: compatible_min::ios14.0
+Author: HASHBANG Productions <support@hbang.ws>
+Depiction: https://chariz.com/get/newterm-beta
+Icon: https://img.chariz.cloud/icon/newterm-beta/icon@3x.png
+Name: NewTerm 3 Beta
+Support: https://hashbang.productions/support/
+
+Package: ws.tang.newterm3
+Version: 3.0~beta1
+Architecture: iphoneos-arm64
+Maintainer: HASHBANG Productions <support@hbang.ws>
+Installed-Size: 14899
+Depends: firmware (>= 14.0), zsh | bash | fish, coreutils, ncurses, system-cmds
+Conflicts: ws.hbang.newterm, ws.hbang.newterm2
+Replaces: ws.hbang.newterm, ws.hbang.newterm2
+Filename: ./ws.tang.newterm3_3.0~beta1_iphoneos-arm64.deb
+Size: 3838952
+MD5sum: 1479d472b81e326d059026e97e48e17c
+SHA1: 0f18a565fbcb412d59642c1884d8e3fd5aa37927
+SHA256: 54a333b255e3450cd5e54c3a556d4b8b8cb27b5efb146825d65c6689e7db3736
+Section: Terminal Support
+Description: Powerful terminal app for iOS
+Tag: compatible_min::ios14.0
+Author: HASHBANG Productions <support@hbang.ws>
+Depiction: https://chariz.com/get/newterm-beta
+Icon: https://pic2.zhimg.com/80/v2-8cb352b490dea9ffab91caa9555e5d8f_qhd.webp
+Name: NewTerm 3 Beta
+Support: https://hashbang.productions/support/
 
