@@ -346,22 +346,6 @@ Description: 解锁万能钥匙本地会员
 Author: tang <>
 Name: WiFiVip
 
-Package: com.tang.xiangrikuiads
-Version: 0.0.1
-Architecture: iphoneos-arm64
-Maintainer: tang <>
-Installed-Size: 72
-Depends: mobilesubstrate
-Filename: ./com.tang.xiangrikuiads_0.0.1_iphoneos-arm64.deb
-Size: 2620
-MD5sum: b0b35b4722369ec0fd127c48b829be20
-SHA1: 8323357be0d46bdb96a3dac1272eb42ac21410b7
-SHA256: 2848bd894b9fe2014f2304fb50214dce955747691c087e95415f471944ee1ca4
-Section: Tweaks
-Description: ***Made using Flex To Theos updated by Randy420***
-Author: tang <>
-Name: XiangRiKuiAds
-
 Package: com.tang.xingtikusvip
 Version: 0.0.1
 Architecture: iphoneos-arm64
@@ -418,11 +402,11 @@ Installed-Size: 14899
 Depends: firmware (>= 14.0), zsh | bash | fish, coreutils, ncurses, system-cmds
 Conflicts: ws.hbang.newterm, ws.hbang.newterm2
 Replaces: ws.hbang.newterm, ws.hbang.newterm2
-Filename: ./命令终端.deb
-Size: 3956420
-MD5sum: 51fc08d4919b2e108a319e7ec28f5afa
-SHA1: 6bd9636448211a5eab285ff109f0e5f058fe0a69
-SHA256: d480160c2b28aad6630fb866f3a37f4464109f0731637353ff9aacef80b0067c
+Filename: ./newterm3_3.0~beta1.deb
+Size: 3959924
+MD5sum: 6a1a2f1fd28be7faca5f01b316d3c2ad
+SHA1: eb0afc90c59775dfcedbf23099f5de6f5acfa00b
+SHA256: f92e98b9c30e57449e9123534010fd6b6c5e1bde91c3669b8532f49eed19cacc
 Section: Terminal Support
 Description: Powerful terminal app for iOS
 Tag: compatible_min::ios14.0
