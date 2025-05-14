@@ -314,22 +314,6 @@ Description: Made using Flex To Theos updated by Randy420
 Author: <>
 Name: WiFiList
 
-Package: com.tang.wifivip
-Version: 0.0.1
-Architecture: iphoneos-arm64
-Maintainer: tang <>
-Installed-Size: 72
-Depends: mobilesubstrate
-Filename: ./com.tang.wifivip_0.0.1_iphoneos-arm64.deb
-Size: 2862
-MD5sum: 79b922c79ebefba9433ac0be407cf023
-SHA1: 34f65c91d80a0e823f7e46b0103425535ab405f4
-SHA256: 5d8a8428f05527dbb57bb19f263cb6fb50f5932d9fdfd4ca7131fdfebedf1cf5
-Section: Tweaks
-Description: 解锁万能钥匙本地会员
-Author: tang <>
-Name: WiFiVip
-
 Package: com.tang.xiangrikuiads
 Version: 0.0.1
 Architecture: iphoneos-arm64
