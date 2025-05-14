@@ -1,38 +1,30 @@
-name: Auto-Generate Repo Index
+name: Auto - Generate Repo Index
 on:
   push:
-    paths: ["repo/**/*.deb"]  # 仅当 repo/ 目录下有 .deb 文件变动时触发
-  workflow_dispatch:  # 也支持手动触发
-
+    paths: ["repo/**/*.deb"]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs - on: ubuntu - latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Install dpkg-scanpackages (依赖工具)
+      - name: Install dpkg - scanpackages (依赖工具)
         run: |
-          sudo apt-get update -y
-          sudo apt-get install -y dpkg-dev  # 包含 dpkg-scanpackages 工具
-
+          sudo apt - get update - y
+          sudo apt - get install - y dpkg - dev  # 包含 dpkg - scanpackages 工具
       - name: Generate Packages.gz
         run: |
-          # 确保 repo 目录存在
-          mkdir -p repo
-          # 生成索引文件（排除临时文件，仅处理 .deb）
-          dpkg-scanpackages repo/ /dev/null | gzip > repo/Packages.gz
-          echo "索引文件已生成：$(ls -l repo/Packages.gz)"  # 打印文件大小验证
-
+          mkdir - p repo
+          dpkg - scanpackages repo/ /dev/null | gzip > repo/Packages.gz
+          echo "索引文件已生成：$(ls - l repo/Packages.gz)"
       - name: Commit and push updates
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          # 仅提交变更的文件（避免空提交）
           git add repo/Packages.gz
-          if git diff --quiet; then
+          if git diff -- quiet; then
             echo "无索引变更，跳过提交。"
           else
-            git commit -m "Auto-update repo index $(date +'%Y-%m-%d %H:%M:%S')"
+            git commit - m "Auto - update repo index $(date +'%Y - %m - %d %H:%M:%S')"
             git push
           fi
