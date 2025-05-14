@@ -1,30 +1,37 @@
-name: Auto - Generate Repo Index
+name: Auto-Update Packages Index
+
 on:
   push:
-    paths: ["repo/**/*.deb"]
+    paths:
+      - 'repo/**'  # 仅当 repo 目录内容变更时触发
+    branches: [ main ]
+
 jobs:
-  build:
-    runs-on: ubuntu - latest
+  generate_packages:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      # 步骤 1：检出代码
+      - name: Checkout Repository
         uses: actions/checkout@v4
-      - name: Install dpkg - scanpackages (依赖工具)
+        with:
+          token: ${{ secrets.PAT }}  # 使用 PAT 保证推送权限
+
+      # 步骤 2：安装依赖工具
+      - name: Install dpkg-scanpackages
+        run: sudo apt-get update && sudo apt-get install -y dpkg-dev
+
+      # 步骤 3：生成 Packages 文件
+      - name: Generate Packages Index
         run: |
-          sudo apt - get update - y
-          sudo apt - get install - y dpkg - dev  # 包含 dpkg - scanpackages 工具
-      - name: Generate Packages.gz
+          cd repo
+          dpkg-scanpackages . /dev/null > Packages
+          gzip -k -f Packages       # 生成 Packages.gz
+          bzip2 -k -f Packages      # 生成 Packages.bz2（部分客户端需要）
+
+      # 步骤 4：提交更新
+      - name: Commit & Push Changes
         run: |
-          mkdir - p repo
-          dpkg - scanpackages repo/ /dev/null | gzip > repo/Packages.gz
-          echo "索引文件已生成：$(ls - l repo/Packages.gz)"
-      - name: Commit and push updates
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git add repo/Packages.gz
-          if git diff -- quiet; then
-            echo "无索引变更，跳过提交。"
-          else
-            git commit - m "Auto - update repo index $(date +'%Y - %m - %d %H:%M:%S')"
-            git push
-          fi
+          git config --global user.name "GitHub Actions Bot"
+          git add repo/Packages*
+          git commit -m "Auto-Update: Packages Index"
+          git push origin main
