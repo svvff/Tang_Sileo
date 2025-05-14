@@ -14,23 +14,48 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PAT }}  # 使用 PAT 保证推送权限
+          token: ${{ secrets.PAT }}
 
       # 步骤 2：安装依赖工具
       - name: Install dpkg-scanpackages
         run: sudo apt-get update && sudo apt-get install -y dpkg-dev
 
-      # 步骤 3：生成 Packages 文件
+      # 步骤 3：生成 Packages 文件到根目录
       - name: Generate Packages Index
         run: |
+          # 进入 deb 文件目录
           cd repo
-          dpkg-scanpackages . /dev/null > Packages
-          gzip -k -f Packages       # 生成 Packages.gz
+          
+          # 检查是否存在 .deb 文件
+          if [ $(ls *.deb 2>/dev/null | wc -l) -eq 0 ]; then
+            echo "错误：repo 目录中没有找到 .deb 文件"
+            exit 1
+          fi
+          
+          # 在根目录生成 Packages 文件
+          dpkg-scanpackages . /dev/null > ../Packages
+          cd ..  # 返回根目录
+          
+          # 生成压缩文件
+          gzip -k -f Packages
+          echo "生成文件列表:"
+          ls -l Packages*
 
-      # 步骤 4：提交更新
+      # 步骤 4：提交更新到根目录
       - name: Commit & Push Changes
         run: |
+          # 配置 Git
           git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions-bot@users.noreply.github.com"
+          
+          # 添加索引文件
           git add Packages*
-          git commit -m "Auto-Update: Packages Index"
-          git push origin main
+          
+          # 检查变更
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "🔧 Auto-Update: Packages Index"
+            git push origin main
+            echo "索引文件已更新"
+          else
+            echo "无索引文件变更"
+          fi
