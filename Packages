@@ -362,6 +362,23 @@ Description: ***Made using Flex To Theos updated by Randy420***
 Author: tang <>
 Name: ZYZhongYiAds
 
+Package: ios.net.immortalizer
+Version: 2.0.1.1
+Architecture: iphoneos-arm64
+Maintainer: Sileo
+Installed-Size: 660
+Depends: mobilesubstrate (>= 0.9.5000), preferenceloader, com.opa334.altlist, com.opa334.ccsupport
+Filename: ./byg.iosios.net.immortalizer_2.0.1.deb
+Size: 50344
+MD5sum: a40b93c4badea17101f9ce38747e9185
+SHA1: 7d469436c1405b9c50f90411992d8b0d2b23d576
+SHA256: 0babb57fc5759a5aa1d63cbb3454fe1090d29f91c96128bfef49d61b041d292b
+Section: 系统增强
+Description: 本插件的作用让您的应用程序无限期地在前台运行，即使它们在后台运行！可以通过 3D Touch 上下文菜单启用/禁用应用程序背景（前景）即使屏幕关闭/设备锁定也能工作！也可以控制中心添加快捷方式，打开你需要保持真后台的软件，然后控制中心点一下模块即可！
+Author: sergy
+Icon: https://chinesebuilding.club/pic/cydia.png
+Name: Immortalizer真后台-Rootless
+
 Package: lizi.newterm.cn
 Version: 1.0
 Architecture: iphoneos-arm64
