@@ -1,42 +1,44 @@
-name: Auto Generate Packages
+name: Build Sileo Repo (No Signing)
 on:
   push:
-    paths:
-      - 'debs/*'  # 监听 debs 根目录文件变动
+    branches: [ main ]  # 推送到 main 分支时自动运行
+  workflow_dispatch:    # 支持手动触发
+
 jobs:
-  generate-packages:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout with PAT
+      - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
         with:
-          token: ${{ secrets.PAT }}
+          python-version: 3.10
 
-      - name: Install tools
+      - name: Install dpkg-scanpackages
         run: |
-          sudo apt-get update
-          sudo apt-get install -y dpkg-dev gzip
+          sudo apt-get update -y
+          sudo apt-get install -y dpkg-dev  # 安装 dpkg-scanpackages 工具
 
-      - name: Check dpkg version
-        run: dpkg --version  # 确认版本是否支持递归（可选）
-
-      - name: Generate Packages
+      - name: Generate repo index
         run: |
-          rm -f Packages*
-          # 关键：移除 --recursive，直接扫描 debs/ 目录
-          dpkg-scanpackages -m debs/ /dev/null | tee >(gzip > Packages.gz)
-          # 验证：检查生成的文件是否包含架构信息
-          if [ -s Packages ]; then
-            echo "成功生成 Packages 文件，包含 $(grep -c 'Architecture:' Packages) 个架构"
+          # 确保 repo 目录存在，不存在则创建
+          mkdir -p repo
+          cd repo
+          # 生成 Packages 索引（压缩版）
+          dpkg-scanpackages . /dev/null | gzip > Packages.gz
+          cd ..
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add -A
+          # 仅在文件有变化时提交（避免空提交）
+          if git diff --quiet; then
+            echo "No changes to commit."
           else
-            echo "警告：未生成 Packages 文件，可能无有效 .deb 文件"
+            git commit -m "Update repo index $(date +'%Y-%m-%d %H:%M:%S')"
+            git push
           fi
-
-      - name: Push changes
-        run: |
-          git config user.name "Auto Packages"
-          git config user.email "auto@example.com"
-          git remote set-url origin "https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git"
-          git add Packages Packages.gz
-          git commit -m "Auto: Update Packages ($(date +%Y%m%d%H%M))" -f || true
-          git push origin main -f
