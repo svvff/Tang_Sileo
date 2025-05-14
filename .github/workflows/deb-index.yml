@@ -26,12 +26,11 @@ jobs:
           cd repo
           dpkg-scanpackages . /dev/null > Packages
           gzip -k -f Packages       # 生成 Packages.gz
-          bzip2 -k -f Packages      # 生成 Packages.bz2（部分客户端需要）
 
       # 步骤 4：提交更新
       - name: Commit & Push Changes
         run: |
           git config --global user.name "GitHub Actions Bot"
-          git add repo/Packages*
+          git add Packages*
           git commit -m "Auto-Update: Packages Index"
           git push origin main
