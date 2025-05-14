@@ -394,6 +394,20 @@ Description: 解决SafariX闪退问题
 Author: x✨
 Name: SafariXHook
 
+Package: lizi.newterm.cn
+Version: 1.0
+Architecture: iphoneos-arm64
+Maintainer: newterm
+Filename: ./lizi.newterm.cn_1.0_iphoneos-arm64.deb
+Size: 1844
+MD5sum: 6c629cbba873d686c8551d5609d15b86
+SHA1: afb3ed6ffd80708cc54b21d1ae94df4fe408adae
+SHA256: 3b3c50085ce7b457497802beb73310b12c81c5c289c33b125fa27b46d2f56970
+Section: newterm
+Priority: optional
+Description: NewTerm3汉化，让theos命令生效
+Name: NewTerm3_theos
+
 Package: ws.hbang.newterm3
 Version: 3.0~beta1
 Architecture: iphoneos-arm64
