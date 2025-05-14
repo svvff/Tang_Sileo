@@ -16,22 +16,6 @@ Icon: https://chinesebuilding.club/pic/cydia.png
 Name: 一键锁屏-Rootless
 Sponsor: 搬运工
 
-Package: com.netskao.dumpdecrypter
-Version: 1.4-4
-Architecture: iphoneos-arm64
-Maintainer: Nets
-Installed-Size: 4324
-Depends: firmware (>= 15.0), mobilesubstrate
-Filename: ./应用砸壳.deb
-Size: 1633964
-MD5sum: b240c5133e0d01a66919e949935e8953
-SHA1: 4c9d65006ba0e26c63ae9f742b2891a1ee3fba6c
-SHA256: 32970c9cd79f89b99e6d54c6c070b91091d3623257f15551a83c44103bc10a70
-Section: Netskao-Tweaks
-Description: Decrypt iOS Apps and Plugins
-Author: Netskao
-Name: DumpDecrypter
-
 Package: com.tang.3dbody
 Version: 0.0.1
 Architecture: iphoneos-arm64
